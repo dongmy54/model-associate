@@ -39,4 +39,11 @@ namespace :my_data do
     puts "subordinate 和 manager关系建立"
   end
 
+  task car_motorcycle_bicycle: :environment do
+    car = Car.create(color: "red", price: 1245.32)
+    motorcycle = Motorcycle.create(color: "blue", price: 5320.6)
+    bicycle = Bicycle.create(color: "white", price: 236.5)
+    puts "创建三笔数据（car motorcycle bicycle)"
+  end
+
 end
