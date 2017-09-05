@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905064332) do
+ActiveRecord::Schema.define(version: 20170905073431) do
 
   create_table "assemblies", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +26,28 @@ ActiveRecord::Schema.define(version: 20170905064332) do
   end
 
   create_table "parts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["imageable_id"], name: "index_pictures_on_imageable_id"
+    t.index ["imageable_type"], name: "index_pictures_on_imageable_type"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -16,4 +16,14 @@ namespace :my_data do
     puts "零件与装配体关系已建立"
   end
 
+  task user_product_picture: :environment do
+    user    = User.create(:name => "user-1")
+    product = Product.create(:name => "product-1")
+    puts "产生user与product资料"
+
+    user.pictures.create(name: "picture-user")
+    product.pictures.create(name: "picture-product")
+    puts "user、product分别建立图片"
+  end
+
 end
