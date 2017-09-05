@@ -1,6 +1,6 @@
 namespace :my_data do
 
-  task assembly_and_part: :environment do
+  task assembly_part: :environment do
     p1 = Part.create(:name => "hu")
     p2 = Part.create(:name => "bar")
     puts "创建了两笔零件资料"
@@ -19,11 +19,24 @@ namespace :my_data do
   task user_product_picture: :environment do
     user    = User.create(:name => "user-1")
     product = Product.create(:name => "product-1")
-    puts "产生user与product资料"
+    puts "创建user与product资料"
 
     user.pictures.create(name: "picture-user")
     product.pictures.create(name: "picture-product")
     puts "user、product分别建立图片"
+  end
+
+  task subordinate_manager: :environment do
+    e1 = Employee.create(:name => "employee-1")
+    e2 = Employee.create(:name => "employee-2")
+    e3 = Employee.create(:name => "employee-3")
+    e4 = Employee.create(:name => "employee-4")
+    puts "创建4笔雇员资料"
+
+    e1.subordinates << e2
+    e1.subordinates << e3
+    e1.subordinates << e4
+    puts "subordinate 和 manager关系建立"
   end
 
 end
